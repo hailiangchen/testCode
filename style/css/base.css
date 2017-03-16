@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: "锟斤拷锟斤拷";
+    font-size: 12px;
+}
+body{
+    background:#ffffff;
+}
+img {
+    border: none;
+}
+
+div,ul,li,p,h1,form {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+form {
+    border: none;
+}
+
+a {
+    color:#333;
+}
