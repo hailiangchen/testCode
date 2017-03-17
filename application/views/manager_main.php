@@ -73,11 +73,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <dl id="menu-system">
-            <dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
+            <dt class="selected"><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd style="display:block;">
                 <ul>
-                    <li><a _href="<?php echo base_url();?>index.php/operator/welcome" data-title="登录列表" href="javascript:void(0)">登录列表</a></li>
-
+                    <li><a _href="<?php echo base_url();?>index.php/manager/welcome" data-title="登录列表" href="javascript:void(0)">登录列表</a></li>
+                    <li><a _href="<?php echo base_url();?>index.php/manager/admin" data-title="管理员" href="javascript:void(0)">管理员</a></li>
                 </ul>
             </dd>
         </dl>
@@ -96,21 +96,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="<?php echo base_url();?>index.php/operator/welcome"></iframe>
+            <iframe scrolling="yes" frameborder="0" src="<?php echo base_url();?>index.php/manager/welcome"></iframe>
         </div>
     </div>
 </section>
 <script type="text/javascript" src="<?php echo base_url();?>lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>lib/layer/2.1/layer.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript">
     $('.table-sort').dataTable({
-        "aaSorting": [[ 1, "desc" ]],//默认第几个排序
+        "aaSorting": [[ 0, "desc" ]],//默认第几个排序
         "bStateSave": true,//状态保存
         "aoColumnDefs": [
             //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-            {"orderable":false,"aTargets":[0]}// 不参与排序的列
+            {"orderable":false,"aTargets":[1,6]}// 不参与排序的列
         ]
     });
     /*资讯-添加*/
