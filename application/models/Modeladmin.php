@@ -86,7 +86,7 @@ class Modeladmin extends CI_Model
 
         // qualification (make sure that
         // we're not allowing the site to update data that it shouldn't)
-        $qualificationArray = array('id','username','beizhu','telephone');
+        $qualificationArray = array('id','username','beizhu','telephone','userpass');
         foreach ($qualificationArray as $qualifier) {
             if (isset($options[$qualifier]))
                 $this->db->set($qualifier, $options[$qualifier]);

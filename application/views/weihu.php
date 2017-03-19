@@ -13,7 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="gong">
 </div>
 <div class="tupian">
-    <p style="font-size: 16px">系统正在维护中,请稍后尝试登陆.....</p>
+    <p style="font-size: 16px">抱歉！您的VV账号已冻结，请联系QQ客服。</p>
+    <div style="margin-top: 15px;text-align: center;"><span><a href="tencent://message/?uin=517631549&Site=&Menu=yes"><img
+                        src="<?php echo base_url();?>style/images/QQ.gif" alt=""></a></span></div>
 </div>
 
 </body>

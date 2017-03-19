@@ -71,7 +71,15 @@ class Modeluser extends CI_Model
             return $query->result();
         }
     }
+    function DeleteUserAll($options = array())
+    {
+        // required values
+        //if(!$this->_required(array('id'), $options)) return false;
 
+        //$this->db->where('id', $options['id']);
+        $this->db->empty_table('user');
+        return $this->db->affected_rows();
+    }
 
 
 

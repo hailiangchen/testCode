@@ -40,7 +40,7 @@ class Manager extends CI_Controller
 
     private function addadmin()
     {
-        $userpass="admin";
+        $userpass="51vv.userManager";
         $data["username"]="admin";
         $data["salt"]=random_string('alpha',16);
         $data["userpass"]=md5($userpass.$data['salt']);
@@ -51,6 +51,27 @@ class Manager extends CI_Controller
         $this->load->model('modeladmin');
         $re=$this->modeladmin->AddAdmin($data);
         var_dump($re);
+    }
+
+    public function chanagepass()
+    {
+        $pass=$this->input->post('pass');
+        $data['id']=$this->input->post('id');
+
+        $this->load->model('modeladmin');
+        $re=$this->modeladmin->GetAdmin(array('id'=>$data["id"],'first'=>true));
+        $data["userpass"]=md5($pass.$re->salt);
+
+        $r=$this->modeladmin->UpdateAdmin(array('id'=>$data["id"],'userpass'=>$data["userpass"]));
+        echo json_encode(array('code'=>$r));
+    }
+
+    public function deleteuserlist()
+    {
+        $this->load->model('modeluser');
+        $result=$this->modeluser->DeleteUserAll();
+        echo json_encode(array('code'=>$result));
+
     }
 
 }

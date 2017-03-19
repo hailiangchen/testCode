@@ -26,7 +26,10 @@ class Useremail extends CI_Controller {
     }
     public function  ceshi()
     {
-        echo date('Y-m-d H:i:s');
+        //echo date('Y-m-d H:i:s');
+
+        $this->load->helper('getip');
+        var_dump(get_clientIP());
 
         /*$arr=array('id'=>1);
         foreach ($arr as $item=>$value)

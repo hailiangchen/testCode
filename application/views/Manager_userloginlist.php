@@ -5,7 +5,7 @@
 <div class="page-container">
 
     <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
-
+            <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont"></i> 清空数据</a>
            </span> <span class="r">共有数据：<strong><?php echo $result?count($result):'0';?></strong> 条</span> </div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-hover table-sort">
@@ -55,6 +55,25 @@
         ]
     });
 
+    function datadel(){
+        layer.confirm('确认要删除吗？',function(index){
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url();?>manager/deleteuserlist',
+                dataType: 'json',
+                success: function(data){
+                   if(data.code>0)
+                   {
+                       layer.msg('已删除!',{icon:1,time:1000});
+                   }
+                    location.reload();
+                },
+                error:function(data) {
+
+                },
+            });
+        });
+    }
 
 </script>
 </body>

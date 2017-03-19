@@ -4,7 +4,7 @@
 body{ width:100%;background:url(../images/sd.jpg) repeat-x;height:100%;}
 
 .gong{ padding-top:115px;}
-.tupian{ margin:0 auto; width:360px; height:63px;}
+.tupian{ margin:0 auto; text-align: center; height:63px;}
 .dengmo{ margin:0 auto; background:url(../images/denglusa.gif) no-repeat; width:337px;height:225px; margin-top:60px; padding-top:35px; padding-left:143px;}
 .text{ margin-top:12px; width:128px; height:20px;}
 .tex{ margin-top:10px; width:70px; height:20px;}
