@@ -63,7 +63,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>lib/layer/2.1/layer.js"></script>
 
-
+<script type="text/javascript" src="<?php echo base_url();?>lib/layer/2.1/extend/layer.ext.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>static/h-ui/js/H-ui.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>static/h-ui.admin/js/H-ui.admin.js"></script>

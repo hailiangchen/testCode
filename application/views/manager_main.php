@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="#">个人信息</a></li>
 
-                            <li><a href="#">退出</a></li>
+                            <li><a href="<?php  echo base_url();?>manager/logout">退出</a></li>
                         </ul>
                     </li>
 
