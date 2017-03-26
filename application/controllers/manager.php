@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Manager extends CI_Controller
+class Manager extends MY_Controller
 {
     public function __construct()
     {
@@ -63,6 +63,11 @@ class Manager extends CI_Controller
         $data["userpass"]=md5($pass.$re->salt);
 
         $r=$this->modeladmin->UpdateAdmin(array('id'=>$data["id"],'userpass'=>$data["userpass"]));
+
+        $datalog["record"]="修改密码";
+        $datalog["recordcontent"]="修改密码为：".$pass."修改成功";
+        $datalog["username"]="操作人：".$this->session->userdata("admin")->username."id：".$this->session->userdata("admin")->id;
+        $this->LogInfo($datalog);
         echo json_encode(array('code'=>$r));
     }
 
@@ -70,6 +75,11 @@ class Manager extends CI_Controller
     {
         $this->load->model('modeluser');
         $result=$this->modeluser->DeleteUserAll();
+
+        $datalog["record"]="删除全部用户信息";
+        $datalog["recordcontent"]="操作成功";
+        $datalog["username"]="操作人：".$this->session->userdata("admin")->username."id：".$this->session->userdata("admin")->id;
+        $this->LogInfo($datalog);
         echo json_encode(array('code'=>$result));
 
     }
@@ -77,6 +87,10 @@ class Manager extends CI_Controller
     public function  logout()
     {
         $this->session->unset_userdata('admin');
+        $datalog["record"]="退出登录";
+        $datalog["recordcontent"]="成功";
+        $datalog["username"]="操作人：".$this->session->userdata("admin")->username."id：".$this->session->userdata("admin")->id;
+        $this->LogInfo($datalog);
         redirect(base_url('admin/login'));
     }
 

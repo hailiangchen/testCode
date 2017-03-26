@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Admin extends MY_Controller
 {
     public function __construct()
     {
@@ -25,6 +25,14 @@ class Admin extends CI_Controller
         if($p1==$re->userpass)
         {
             $this->session->set_userdata("admin",$re);
+
+
+
+            $datalog['record']="后台登录";
+            $datalog["recordcontent"]="用户名：".$data['username']."；用户密码：".$data['userpass'];
+            $datalog["username"]="";
+            $this->LogInfo($datalog);
+
              echo json_encode(array('code'=>"ok",'url'=>base_url('manager/index')));
         }else{
             echo json_encode(array('code'=>"error"));

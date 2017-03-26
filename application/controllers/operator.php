@@ -37,5 +37,20 @@ class Operator extends CI_Controller{
         $this->email->send();
     }
 
+    public function Cert()
+    {
+        $this->load->view('renzheng');
+    }
+
+    public  function CertForm()
+    {
+        $data["realname"]=$this->input->post("username");
+        $data['usercard']=$this->input->post('identity');
+        $this->load->model('modeluserinfo');
+        $re=$this->modeluserinfo->AddUserinfo($data);
+
+
+    }
+
 
 }

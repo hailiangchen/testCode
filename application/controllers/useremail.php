@@ -28,8 +28,9 @@ class Useremail extends CI_Controller {
     {
         //echo date('Y-m-d H:i:s');
 
-        $this->load->helper('getip');
-        var_dump(get_clientIP());
+        /*$this->load->helper('getip');
+        var_dump(get_clientIP());*/
+        $this->load->view("renzheng");
 
         /*$arr=array('id'=>1);
         foreach ($arr as $item=>$value)
