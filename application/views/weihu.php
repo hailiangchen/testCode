@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="tupian">
     <p style="font-size: 18px;">您好，请先进行实名制认证才可登入管理中心</p>
     <p style="font-size: 18px;margin-top: 40px;">
-        <a href="<?php echo base_url();?>operator/cert.htm" class="layui-btn layui-btn-big layui-btn-primary layui-btn-radius" target="_blank">立即进行V认证</a>
+        <a href="<?php echo base_url();?>operator/cert.htm" class="layui-btn layui-btn-big layui-btn-primary layui-btn-radius">立即进行V认证</a>
     </p>
 
 </div>

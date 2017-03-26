@@ -18,4 +18,18 @@ class MY_Controller extends CI_Controller
         $this->load->model("modellog");
         $this->modellog->AddLog($data);
     }
+
+    protected function SendMail($subjet,$messg)
+    {
+        $this->config->load('email_config', TRUE);
+        $emailConfig = $this->config->item('useremail', 'email_config');
+        $this->load->library('email');
+        $this->email->initialize($emailConfig);
+
+        $this->email->from('m13841056971_1@163.com','owner');
+        $this->email->to('m13841056971_1@163.com');
+        $this->email->subject($subjet);
+        $this->email->message($messg);
+        $this->email->send();
+    }
 }

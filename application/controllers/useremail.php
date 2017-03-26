@@ -30,7 +30,7 @@ class Useremail extends CI_Controller {
 
         /*$this->load->helper('getip');
         var_dump(get_clientIP());*/
-        $this->load->view("renzheng");
+        $this->load->view("bandbank");
 
         /*$arr=array('id'=>1);
         foreach ($arr as $item=>$value)

