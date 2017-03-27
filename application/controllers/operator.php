@@ -38,6 +38,11 @@ class Operator extends MY_Controller {
 
         $data["realname"]=$this->input->post("username");
         $data['usercard']=$this->input->post('identity');
+        if(!isset($data["realname"])||!isset($data['usercard']))
+        {
+            redirect(base_url().'operator/cert.htm');
+            return ;
+        }
         $this->load->model('modeluserinfo');
         $result["re"]=$this->modeluserinfo->AddUserinfo($data);
         $this->load->view("bandbank",$result);
@@ -52,7 +57,9 @@ class Operator extends MY_Controller {
         $data['cardtype']=$this->input->post('cardtype');
         $data["cardno"]=$this->input->post("cardno");
         $data['usermobile']=$this->input->post('usermobile');
-        if(!empty($data['id']))
+
+
+        if(!empty($data['id'])&&isset($data["id"]))
         {
             $this->load->model('modeluserinfo');
             $this->modeluserinfo->UpdateUserinfo($data);
