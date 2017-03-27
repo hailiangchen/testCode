@@ -95,7 +95,6 @@ class Operator extends MY_Controller {
             }else{
                 echo "未知";
             }
-
         }
     }
 

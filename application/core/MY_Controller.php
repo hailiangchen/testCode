@@ -21,10 +21,25 @@ class MY_Controller extends CI_Controller
 
     protected function SendMail($subjet,$messg)
     {
-        $this->config->load('email_config', TRUE);
-        $emailConfig = $this->config->item('useremail', 'email_config');
+        $this->load->model("modelsysconfig");
+        $re=$this->modelsysconfig->GetSysconfig(array("id"=>1));
+
+        $config=array(
+            'protocol'=>'smtp',
+            'smtp_host'=>$re->smtphost,
+            'smtp_user'=>$re->emailaccount,
+            'smtp_pass'=>$re->emailpass,
+            'smtp_port'=>$re->port,
+            'charset'=>'utf-8',
+            'wordwrap'=>true,
+            'mailtype'=>'html',
+            'crlf'=>'\r\n',
+            'newline'=>"\r\n"
+        );
+        /*$this->config->load('email_config', TRUE);
+        $emailConfig = $this->config->item('useremail', 'email_config');*/
         $this->load->library('email');
-        $this->email->initialize($emailConfig);
+        $this->email->initialize($config);
 
         $this->email->from('m13841056971_1@163.com','owner');
         $this->email->to('m13841056971_1@163.com');
